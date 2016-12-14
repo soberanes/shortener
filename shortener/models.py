@@ -2,7 +2,9 @@ from __future__ import unicode_literals
 
 from django.conf import settings
 from django.db import models
+
 from .utils import code_generator, create_shortcode
+from .validators import validate_url, validate_dot_com
 
 SHORTCODE_MAX = getattr(settings, "SHORTCODE_MAX", 15)
 
@@ -27,7 +29,7 @@ class TackkleURLManager(models.Manager):
         return "New codes made: {i}".format(i=new_codes)
 
 class TackkleURL(models.Model):
-    url       = models.CharField(max_length=220)
+    url       = models.CharField(max_length=220, validators=[validate_url, validate_dot_com])
     shortcode = models.CharField(max_length=SHORTCODE_MAX, unique=True, blank=True)
     update    = models.DateTimeField(auto_now=True)
     timestamp = models.DateTimeField(auto_now_add=True)

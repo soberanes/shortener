@@ -24,7 +24,7 @@ class HomeView(View):
             "form": form
         }
         if form.is_valid():
-            print(form.cleaned_data)
+            print(form.cleaned_data.get("url"))
         return render(request, "shortener/home.html", context)
 
 
