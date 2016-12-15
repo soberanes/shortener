@@ -17,15 +17,27 @@ class HomeView(View):
         return render(request, "shortener/home.html", context)
 
     def post(self, request, *args, **kwargs):
-
         form = SubmitUrlForm(request.POST)
         context = {
             "title": "nbx.in",
             "form": form
         }
+        template = "shortener/home.html"
         if form.is_valid():
             print(form.cleaned_data.get("url"))
-        return render(request, "shortener/home.html", context)
+            new_url = form.cleaned_data.get("url")
+            obj, created = TackkleURL.objects.get_or_create(url=new_url)
+            context = {
+                "object": obj,
+                "created": created
+            }
+            if(created):
+                template = "shortener/success.html"
+            else:
+                template = "shortener/already-exists.html"
+
+
+        return render(request, template, context)
 
 
 #
