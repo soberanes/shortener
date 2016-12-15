@@ -61,6 +61,8 @@ ROOT_URLCONF = 'tackkle.urls'
 ROOT_HOSTCONF = 'tackkle.hosts'
 DEFAULT_HOST = 'www'
 DEFAULT_REIRECT_URL = 'http://www.nbx.in:8000'
+PARENT_HOST = 'nbx.in:8000'
+
 
 TEMPLATES = [
     {

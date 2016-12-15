@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.conf import settings
 from django.db import models
+from django_hosts.resolvers import reverse
 
 from .utils import code_generator, create_shortcode
 from .validators import validate_url, validate_dot_com
@@ -42,13 +43,12 @@ class TackkleURL(models.Model):
             self.shortcode = create_shortcode(self)
         super(TackkleURL, self).save(*args, **kwargs)
 
-    # class Meta:
-    #     ordering = '-id'
-    # def my_save(self):
-    #     self.save()
-
     def __str__(self):
         return str(self.url)
 
     def __unicode__(self):
         return str(self.url)
+
+    def get_short_url(self):
+        url_path = reverse("scode", kwargs={'shortcode':self.shortcode}, host='www', scheme='http')
+        return url_path

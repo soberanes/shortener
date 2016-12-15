@@ -22,5 +22,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', HomeView.as_view()),
     # url(r'^(?P<shortcode>[\w-]+){6,15}/$', tackkle_redirect_view),
-    url(r'^(?P<shortcode>[\w-]+){6,15}/$', TackkleCBView.as_view()),
+    url(r'^(?P<shortcode>[\w-]+)/$', TackkleCBView.as_view(), name='scode'),
 ]
