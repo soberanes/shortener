@@ -6,7 +6,7 @@ pip-selfcheck.json
 *.py[cod]
 *.DS_Store
 *.pyc
-
+*.sqlite3
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
