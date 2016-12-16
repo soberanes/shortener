@@ -11,9 +11,11 @@ from .models import TackkleURL
 class HomeView(View):
     def get(self, request, *args, **kwargs):
         the_form = SubmitUrlForm()
+        bg_image = 'http://www.attpbgolf.com/content/uploads/2015/09/Pebble-Beach-8th-Hole-1800x1200.jpg'
         context = {
             "title": "nbx.in",
-            "form": the_form
+            "form": the_form,
+            "bg_image": bg_image
         }
         return render(request, "shortener/home.html", context)
 

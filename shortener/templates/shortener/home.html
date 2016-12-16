@@ -1,5 +1,24 @@
 {% extends "base.html" %}
 
+{% block styles %}
+<style media="screen">
+    body{
+        {% if bg_image %}background-image: url('{{ bg_image }}');{% endif %}
+        background-size: cover;
+        background-repeat: no-repeat;
+        text-shadow: none;
+    }
+    .btn-link{
+        color: #6aefb6;
+    }
+    .btn-link:focus, .btn-link:hover{
+        color: #6aefb6;
+        text-shadow: none;
+    }
+</style>
+{% endblock styles %}
+
+
 {% block title %}
 {{ object.shortcode }} | {{ block.super }}
 {% endblock title %}
@@ -7,13 +26,14 @@
 {% block content %}
 
     <h1 class="cover-heading">{{ title }}</h1>
+    <p class="lead">Shorten that URL</p>
     <p class="lead">
         <div class="col-sm-6 col-sm-offset-3">
             <form action="." method="post">
                 {% csrf_token %}
                 <!-- <input type="text" placeholder="Paste a link to shorten it" name="url"> -->
                 {{ form.as_p }}
-                <input class="btn btn-primary" type="submit" value="Shorten">
+                <input class="btn btn-primary" type="submit" value="Shorten &raquo">
             </form>
         </div>
     </p>
