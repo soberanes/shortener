@@ -1,7 +1,8 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render, get_object_or_404
 from django.views import View
 
+from analytics.models import ClickEvent
 from .forms import SubmitUrlForm
 from .models import TackkleURL
 
@@ -36,7 +37,6 @@ class HomeView(View):
             else:
                 template = "shortener/already-exists.html"
 
-
         return render(request, template, context)
 
 
@@ -48,7 +48,12 @@ class HomeView(View):
 #     return HttpResponseRedirect(obj.url)
 
 #class based view
-class TackkleCBView(View):
+class URLRedirectView(View):
     def get(self, request, shortcode=None, *args, **kwargs):
-        obj = get_object_or_404(TackkleURL, shortcode=shortcode)
+        qs = TackkleURL.objects.filter(shortcode__iexact=shortcode)
+        if qs.count() != 1 and not qs.exists():
+            raise Http404
+
+        obj = qs.first()
+        print(ClickEvent.objects.create_event(obj))
         return HttpResponseRedirect(obj.url)
