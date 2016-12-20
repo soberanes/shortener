@@ -25,7 +25,7 @@ SECRET_KEY = 'pic_fg&$+=q^t@2za1v2f=o$#=%atb&al2d#@p)=xm@xjf9^3)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['www.nbx.in', 'nbx.in', 'https://nbx.herokuapp.com']
+ALLOWED_HOSTS = ['www.nbx.in', 'nbx.in', 'nbx.herokuapp.com']
 
 
 # Application definition
