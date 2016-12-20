@@ -100,3 +100,9 @@ ENV/
 .ropeproject
 
 .pyc
+
+venv
+*.pyc
+staticfiles
+.env
+tackkle/settings/local.py
