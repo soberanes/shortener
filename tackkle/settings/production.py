@@ -61,7 +61,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'tackkle.urls'
 ROOT_HOSTCONF = 'tackkle.hosts'
 DEFAULT_HOST = 'www'
-DEFAULT_REIRECT_URL = 'https://nbx.herokuapp.com'
+DEFAULT_REIRECT_URL = 'http://www.nbxs.in'
 PARENT_HOST = 'nbx.in'
 
 
